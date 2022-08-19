@@ -4,10 +4,10 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-public class ReadDto {
+public class ReadDto { //회원정보조회
 
-    private final String name;
-    private final String identity;
+    private String name;
+    private String identity;
 
     @Builder
     public ReadDto(String name, String identity) {
