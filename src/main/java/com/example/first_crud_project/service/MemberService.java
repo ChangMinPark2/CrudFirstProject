@@ -28,7 +28,8 @@ public class MemberService {
                 .name(signUpDto.getName())
                 .password(signUpDto.getPassword())
                 .build();
-        //TODO : 예외처리
+        //TODO : 예외처리 1 2 3 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         memberRepository.save(member);
 
     }
