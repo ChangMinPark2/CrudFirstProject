@@ -1,9 +1,6 @@
 package com.example.first_crud_project.service;
 
-import com.example.first_crud_project.domain.dto.DeleteDto;
-import com.example.first_crud_project.domain.dto.ReadDto;
-import com.example.first_crud_project.domain.dto.SignUpDto;
-import com.example.first_crud_project.domain.dto.UpdateDto;
+import com.example.first_crud_project.domain.dto.*;
 import com.example.first_crud_project.domain.entity.Member;
 import com.example.first_crud_project.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,17 +15,22 @@ public class MemberService {
 //    public MemberService(MemberRepository memberRepository) {
 //        this.memberRepository = memberRepository;
 //    }
-
+//회원 가입
     public void signUp(SignUpDto signUpDto){
+        Boolean isExistIdentity = memberRepository.existsByIdentity(signUpDto.getIdentity());
+
+        if(isExistIdentity){
+            System.out.println("아이디가 중복되었습니다.");
+        }
+
         Member member =Member.builder()
                 .identity(signUpDto.getIdentity())
                 .name(signUpDto.getName())
                 .password(signUpDto.getPassword())
                 .build();
-
         //TODO : 예외처리
-
         memberRepository.save(member);
+
     }
     //회원 수정 기능
     public void update(UpdateDto updateDto){
@@ -63,5 +65,11 @@ public class MemberService {
         }
         memberRepository.delete(member);
     }
-
+/*
+    public OverlapDto overlapDto(String identity){
+        Member member = memberRepository.findByIdentity(identity);
+        if(identity == overlapDto.getIdentity(identity)){
+        }
+    }
+*/
 }

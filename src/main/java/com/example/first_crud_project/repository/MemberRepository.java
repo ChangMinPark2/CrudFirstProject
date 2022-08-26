@@ -9,4 +9,6 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     //TODO : Optional로 감싸서 받는다는 것 공부하기 왜? -> Optional<Member> findByIdnetity(String identity)
     Member findByIdentity(String identity);
+
+    Boolean existsByIdentity(String identity);
 }
