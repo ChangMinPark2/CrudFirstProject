@@ -67,12 +67,12 @@ public class MemberService {
         memberRepository.delete(member);
     }
 
-    public OverlapDto overlapDto(String identity){
-        Member member = memberRepository.findByIdentity(identity);
-        if(identity == overlapDto.getIdentity(identity)){
-        }
+   // public OverlapDto overlapDto(String identity){
+     //   Member member = memberRepository.findByIdentity(identity);
+       // if(identity == overlapDto.getIdentity(identity)){
+        //}
 
         //TODO : 예외처리 중복회원기능
-    }
-
 }
+
+

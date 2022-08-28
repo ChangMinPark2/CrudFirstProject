@@ -35,10 +35,10 @@ public class MemberController {
     public void delete(DeleteDto deleteDto){
         memberService.delete(deleteDto);
     }
-    @GetMapping
-    public OverlapDto overlapDto(@RequestParam("identity") String identity){
-        return memberService.overlapDto(identity);
-    }
+  //  @GetMapping
+   // public OverlapDto overlapDto(@RequestParam("identity") String identity){
+   //     return memberService.overlapDto(identity);
+   // }
 
 }
 

@@ -1,12 +1,9 @@
 package com.example.first_crud_project.domain.entity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Getter
+@Setter
 @Entity
 @Table
 @AllArgsConstructor
