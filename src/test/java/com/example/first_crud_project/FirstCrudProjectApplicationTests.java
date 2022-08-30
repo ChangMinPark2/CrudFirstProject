@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 
-class FirstCrudProjectApplicationTests
+class FirstCrudProjectApplicationTests{
 
     private final MemberRepository memberRepository;
 
@@ -19,19 +19,5 @@ class FirstCrudProjectApplicationTests
     public FirstCrudProjectApplicationTests(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
-
-
-    @Test
-        void 회원가입() {
-            // 멤버 저장
-            Member member = new Member();
-            member.setName("박창민");
-            memberRepository.save(member);
-
-            // 저장한 멤버 아이디로 검색
-            Member findMember = memberRepository.findByIdentity(member.getIdentity()).get();
-            Assertions.assertThat(member.getName()).isEqualTo(findMember.getName());
-        ]
-
 
 }

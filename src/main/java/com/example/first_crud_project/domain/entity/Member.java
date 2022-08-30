@@ -3,6 +3,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
+@Getter
 @Setter
 @Entity
 @Table
@@ -21,7 +22,13 @@ public class Member {
 
     private String name;
 
-    //TODO : 필드 추가.
+    private String email;
+
+    private String address;
+
+    private String cellphone;
+
+
 
     //TODO : Builder 패턴이란?
     @Builder
@@ -31,8 +38,11 @@ public class Member {
         this.name = name;
     }
 
-    public void updateName(String name) {
+    public void updateName(String name, String email, String address, String cellphone) {
+        this.email = email;
         this.name = name;
+        this.address = address;
+        this.cellphone = cellphone;
     }
 
 

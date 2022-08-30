@@ -6,8 +6,11 @@ import com.example.first_crud_project.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;
@@ -35,11 +38,31 @@ public class MemberService {
     }
     //회원 수정 기능
     public void update(UpdateDto updateDto){
-        Member member = memberRepository.findByIdentity(updateDto.getIdentity());
-
         //TODO : 예외처리
+        if(updateDto.getIdentity() == null || updateDto.getEmail() == null || updateDto.getCellphone() == null ||
+                updateDto.getEmail() == null ||updateDto.getName() == null ||updateDto.getPassword() ==null){
+            System.out.println("필수항목을 작성하지 않았습니다.");
+        }
+        Member member = memberRepository.findByIdentity(updateDto.getIdentity());
+        if(member == null){// TODO : 궁금한점 -> 여기서 member.getIdentity를 안한이유는 이미 위에서 updateDto에서 identity를 가져와서인가?
+            System.out.println("해당 아이디는 존재하지 않습니다.");
+        }
+        //TODO : 궁금한점 -> 위에 코드로 인해 이미 아이디는 일치하고, 내려온 경우인가? 당연한거지만 확실하게 잡쟈
+        if(!updateDto.getPassword().equals((member.getPassword()))){
+            System.out.println("비밀번호가 일치하지 않습니다.");
+        }
 
-        member.updateName(updateDto.getName()); // 홍길동에서 홍준표로 바뀌는 부분
+        //Boolean isExistName = memberRepository.existsByName(updateDto.getName());
+        //Boolean isExistCellphone = memberRepository.existsByCellPhone(updateDto.getCellphone());
+
+        if(updateDto.getCellphone().equals(member.getCellphone())){
+            System.out.println("중복된 전화번호입니다.");
+        }
+        if(updateDto.getName().equals(member.getName())){
+            System.out.println("중복된 이름입니다.");
+        }
+    member.updateName(updateDto.getName(), updateDto.getEmail(), updateDto.getCellphone(), updateDto.getAddress());
+      //  member.updateName(updateDto.getName()); // 홍길동에서 홍준표로 바뀌는 부분
         memberRepository.save(member);
     }
 

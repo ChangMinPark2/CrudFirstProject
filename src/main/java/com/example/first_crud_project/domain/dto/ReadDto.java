@@ -8,10 +8,16 @@ public class ReadDto { //회원정보조회
 
     private String name;
     private String identity;
+    private String email;
+    private String cellphone;
+    private String address;
 
     @Builder
-    public ReadDto(String name, String identity) {
+    public ReadDto(String name, String identity, String email, String cellphone, String address) {
         this.name = name;
         this.identity = identity;
+        this.email = email;
+        this.email = cellphone;
+        this.address = address;
     }
 }
