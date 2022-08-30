@@ -44,10 +44,10 @@ public class MemberService {
             System.out.println("필수항목을 작성하지 않았습니다.");
         }
         Member member = memberRepository.findByIdentity(updateDto.getIdentity());
-        if(member == null){// TODO : 궁금한점 -> 여기서 member.getIdentity를 안한이유는 이미 위에서 updateDto에서 identity를 가져와서인가?
+        if(member == null){// TODO : 궁금한점 -> 여기서 member.getIdentity를 안한이유는 이미 위에서 updateDto에서 identity를 가져와서인가.?
             System.out.println("해당 아이디는 존재하지 않습니다.");
         }
-        //TODO : 궁금한점 -> 위에 코드로 인해 이미 아이디는 일치하고, 내려온 경우인가? 당연한거지만 확실하게 잡쟈
+        //TODO : 궁금한점 -> 위에 코드로 인해 이미 아이디는 일치하고, 내려온 경우인가? 당연한거지만 확실하게 잡쟈.
         if(!updateDto.getPassword().equals((member.getPassword()))){
             System.out.println("비밀번호가 일치하지 않습니다.");
         }
@@ -70,7 +70,7 @@ public class MemberService {
     public ReadDto getMember(String identity){
         Member member = memberRepository.findByIdentity(identity);
 
-        //TODO : 예외처리
+        //TODO : 밑에 코드만으로 회원 이름, 이메일 주소 폰번호가 조회가 되는가 ?
 
         ReadDto readDto = ReadDto.builder()
                 .identity(member.getIdentity())

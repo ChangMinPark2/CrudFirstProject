@@ -19,5 +19,6 @@ public class ReadDto { //회원정보조회
         this.email = email;
         this.email = cellphone;
         this.address = address;
+        //TODO : 빌더부분
     }
 }
