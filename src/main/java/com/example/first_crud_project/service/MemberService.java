@@ -1,6 +1,6 @@
 package com.example.first_crud_project.service;
 
-import com.example.first_crud_project.domain.dto.*;
+import com.example.first_crud_project.domain.memberDto.*;
 import com.example.first_crud_project.domain.entity.Member;
 import com.example.first_crud_project.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -39,15 +39,15 @@ public class MemberService {
     //회원 수정 기능
     public void update(UpdateDto updateDto){
         //TODO : 예외처리
-        if(updateDto.getIdentity() == null || updateDto.getEmail() == null || updateDto.getCellphone() == null ||
+        if(updateDto.getIdentity() == null || updateDto.getEmail() == null || updateDto.getCellPhone() == null ||
                 updateDto.getEmail() == null ||updateDto.getName() == null ||updateDto.getPassword() ==null){
             System.out.println("필수항목을 작성하지 않았습니다.");
         }
         Member member = memberRepository.findByIdentity(updateDto.getIdentity());
-        if(member == null){// TODO : 궁금한점 -> 여기서 member.getIdentity를 안한이유는 이미 위에서 updateDto에서 identity를 가져와서인가?
+        if(member == null){// TODO : 궁금한점 -> 여기서 member.getIdentity를 안한이유는 이미 위에서 updateDto에서 identity를 가져와서인가.?
             System.out.println("해당 아이디는 존재하지 않습니다.");
         }
-        //TODO : 궁금한점 -> 위에 코드로 인해 이미 아이디는 일치하고, 내려온 경우인가? 당연한거지만 확실하게 잡쟈
+        //TODO : 궁금한점 -> 위에 코드로 인해 이미 아이디는 일치하고, 내려온 경우인가? 당연한거지만 확실하게 잡쟈.
         if(!updateDto.getPassword().equals((member.getPassword()))){
             System.out.println("비밀번호가 일치하지 않습니다.");
         }
@@ -55,13 +55,13 @@ public class MemberService {
         //Boolean isExistName = memberRepository.existsByName(updateDto.getName());
         //Boolean isExistCellphone = memberRepository.existsByCellPhone(updateDto.getCellphone());
 
-        if(updateDto.getCellphone().equals(member.getCellphone())){
+        if(updateDto.getCellPhone().equals(member.getCellPhone())){
             System.out.println("중복된 전화번호입니다.");
         }
         if(updateDto.getName().equals(member.getName())){
-            System.out.println("중복된 이름입니다.");
+            System.out.println("전 이름과 동일합니다.");
         }
-    member.updateName(updateDto.getName(), updateDto.getEmail(), updateDto.getCellphone(), updateDto.getAddress());
+    member.updateMember(updateDto.getName(), updateDto.getEmail(), updateDto.getCellPhone(), updateDto.getAddress());
       //  member.updateName(updateDto.getName()); // 홍길동에서 홍준표로 바뀌는 부분
         memberRepository.save(member);
     }
@@ -70,7 +70,7 @@ public class MemberService {
     public ReadDto getMember(String identity){
         Member member = memberRepository.findByIdentity(identity);
 
-        //TODO : 예외처리
+        //TODO : 밑에 코드만으로 회원 이름, 이메일 주소 폰번호가 조회가 되는가 ?
 
         ReadDto readDto = ReadDto.builder()
                 .identity(member.getIdentity())
