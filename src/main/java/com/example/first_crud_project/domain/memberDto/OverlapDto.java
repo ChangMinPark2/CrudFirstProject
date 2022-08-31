@@ -1,4 +1,4 @@
-package com.example.first_crud_project.domain.dto;
+package com.example.first_crud_project.domain.memberDto;
 
 import lombok.Getter;
 

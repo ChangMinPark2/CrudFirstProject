@@ -1,6 +1,6 @@
 package com.example.first_crud_project.service;
 
-import com.example.first_crud_project.domain.dto.*;
+import com.example.first_crud_project.domain.memberDto.*;
 import com.example.first_crud_project.domain.entity.Member;
 import com.example.first_crud_project.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -39,7 +39,7 @@ public class MemberService {
     //회원 수정 기능
     public void update(UpdateDto updateDto){
         //TODO : 예외처리
-        if(updateDto.getIdentity() == null || updateDto.getEmail() == null || updateDto.getCellphone() == null ||
+        if(updateDto.getIdentity() == null || updateDto.getEmail() == null || updateDto.getCellPhone() == null ||
                 updateDto.getEmail() == null ||updateDto.getName() == null ||updateDto.getPassword() ==null){
             System.out.println("필수항목을 작성하지 않았습니다.");
         }
@@ -55,13 +55,13 @@ public class MemberService {
         //Boolean isExistName = memberRepository.existsByName(updateDto.getName());
         //Boolean isExistCellphone = memberRepository.existsByCellPhone(updateDto.getCellphone());
 
-        if(updateDto.getCellphone().equals(member.getCellphone())){
+        if(updateDto.getCellPhone().equals(member.getCellPhone())){
             System.out.println("중복된 전화번호입니다.");
         }
         if(updateDto.getName().equals(member.getName())){
-            System.out.println("중복된 이름입니다.");
+            System.out.println("전 이름과 동일합니다.");
         }
-    member.updateName(updateDto.getName(), updateDto.getEmail(), updateDto.getCellphone(), updateDto.getAddress());
+    member.updateMember(updateDto.getName(), updateDto.getEmail(), updateDto.getCellPhone(), updateDto.getAddress());
       //  member.updateName(updateDto.getName()); // 홍길동에서 홍준표로 바뀌는 부분
         memberRepository.save(member);
     }

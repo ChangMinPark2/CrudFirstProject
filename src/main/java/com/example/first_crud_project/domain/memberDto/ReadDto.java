@@ -1,4 +1,4 @@
-package com.example.first_crud_project.domain.dto;
+package com.example.first_crud_project.domain.memberDto;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -7,9 +7,13 @@ import lombok.Getter;
 public class ReadDto { //회원정보조회
 
     private String name;
+
     private String identity;
+
     private String email;
-    private String cellphone;
+
+    private String cellPhone;
+
     private String address;
 
     @Builder

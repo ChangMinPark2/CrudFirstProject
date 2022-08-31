@@ -1,10 +1,9 @@
 package com.example.first_crud_project.controller;
 
 
-import com.example.first_crud_project.domain.dto.*;
+import com.example.first_crud_project.domain.memberDto.*;
 import com.example.first_crud_project.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
